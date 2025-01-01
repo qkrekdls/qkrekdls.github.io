@@ -28,7 +28,6 @@
         background-size: 100% 100%; /* 원래 크기로 돌아감 */
       }
     }
-  
     .container {
       perspective: 1000px; /* 3D 효과 */
       position: relative; /* 자식 요소가 absolute로 잘 배치될 수 있도록 수정 */
@@ -38,13 +37,12 @@
       height: 100vh;
       width: 100%;
       overflow: hidden;
-      z-index: 1; /* 별보다 앞에 오도록 설정 */
     }
     /* 기본 상태 */
     .carousel-item {
     position: absolute;
-    width: 450px; /* 카드 너비 */
-    height: 600px; /* 카드 높이 */
+    width: 20%;
+    height: auto;
     transform-origin: center;
     transform: scale(0.8) translateZ(0);
     transition: transform 0.5s ease, opacity 0.5s ease;
@@ -74,13 +72,13 @@
     z-index: 1;
     transform: translateX(100%) rotateY(-30deg) scale(0.9); /* 약간 작아지고 오른쪽으로 이동 */
     }
-
+    
     @media (max-width: 768px) {
       /* 기본 상태 */
       .carousel-item {
       position: absolute;
-      width: 300px; /* 카드 너비 */
-      height: 400px; /* 카드 높이 */
+      width: 70%;
+      height: auto;
       }
     }
   </style>
