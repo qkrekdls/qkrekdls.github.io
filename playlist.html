@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YM Playlists</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .playlist-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .playlist-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .playlist-item h3 {
+      margin: 0;
+    }
+    .app-icons {
+      display: flex;
+      gap: 10px;
+    }
+    .app-icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Playlists</h1>
+  <div class="playlist-container">
+    <div class="playlist-item">
+      <h3>My Playlist 1</h3>
+      <div class="app-icons">
+        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
+        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
+        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
+        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
+      </div>
+    </div>
+
+    <div class="playlist-item">
+      <h3>My Playlist 2</h3>
+      <div class="app-icons">
+        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
+        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
+        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
+        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
+      </div>
+    </div>
+
+    <div class="playlist-item">
+      <h3>My Playlist 3</h3>
+      <div class="app-icons">
+        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
+        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
+        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
+        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addToSpotify() {
+      alert("Adding to Spotify playlist...");
+      // 실제 Spotify API 연동 코드 필요
+    }
+    
+    function addToMelon() {
+      alert("Adding to Melon playlist...");
+      // 실제 Melon API 연동 코드 필요
+    }
+
+    function addToAppleMusic() {
+      alert("Adding to Apple Music playlist...");
+      // 실제 Apple Music API 연동 코드 필요
+    }
+
+    function addToGenie() {
+      alert("Adding to Genie playlist...");
+      // 실제 Genie API 연동 코드 필요
+    }
+  </script>
+</body>
+</html>

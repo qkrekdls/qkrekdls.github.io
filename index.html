@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAKAKITA's CARTOON CLUB</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+    #coming-soon, #main-content {
+      display: none; /* 기본적으로 숨김 */
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    #coming-soon {
+      display: block; /* 처음에는 Coming Soon만 보이도록 설정 */
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px; /* 최대 너비 */
+      aspect-ratio: 16 / 9; /* 화면 비율 고정 */
+      overflow: hidden;
+    }
+    .container img {
+      width: 100%; /* 부모 요소의 너비에 맞춤 */
+      height: auto; /* 비율 유지 */
+    }
+    .clickable.profile {
+      position: absolute;
+      cursor: pointer;
+      /* 클릭 가능한 영역 설정 (책) */
+      top: 60%; /* 위치 조정 */
+      left: 55.5%;
+      width: 9%; /* 영역 너비 */
+      height: 9%; /* 영역 높이 */
+      transform: translate(-50%, -50%);
+      /*background-color: rgba(255, 0, 0, 0.3); /* 클릭 영역 시각화 (테스트용, 나중에 지워도 됨) */
+    }
+    .clickable.poster {
+      position: absolute;
+      top: 31%; /* 포스터의 대략적인 Y 위치 */
+      left: 37%; /* 포스터의 대략적인 X 위치 */
+      width: 8%; /* 클릭 영역 너비 */
+      height: 23%; /* 클릭 영역 높이 */
+      transform: translate(-50%, -50%);
+      /*background-color: rgba(0, 255, 0, 0.3); /* 테스트용, 나중에 제거 가능 */
+    }
+    .clickable.cartoon {
+      position: absolute;
+      top: 36%; /* 자기소개서의 대략적인 Y 위치 */
+      left: 70%; /* 자기소개서의 대략적인 X 위치 */
+      width: 7%; /* 클릭 영역 너비 */
+      height: 16%; /* 클릭 영역 높이 */
+      transform: translate(-50%, -50%);
+      /*background-color: rgba(0, 0, 255, 0.3); /* 테스트용, 나중에 제거 가능 */
+    }
+    .clickable.form {
+      position: absolute;
+      top: 39%; /* 자기소개서의 대략적인 Y 위치 */
+      left: 29%; /* 자기소개서의 대략적인 X 위치 */
+      width: 8%; /* 클릭 영역 너비 */
+      height: 23%; /* 클릭 영역 높이 */
+      transform: translate(-50%, -50%);
+      /*background-color: rgba(0, 0, 255, 0.3); /* 테스트용, 나중에 제거 가능 */
+    }
+    .clickable.youtube {
+      position: absolute;
+      top: 51%;
+      left: 58.5%;
+      width: 3%;
+      height: 4%;
+      transform: translate(-50%, -50%);
+      /*background-color: rgba(0, 0, 255, 0.3); /* 테스트용, 나중에 제거 가능 */
+    }
+    .clickable.playlist {
+      position: absolute;
+      top: 55%;
+      left: 60%;
+      width: 3%;
+      height: 4%;
+      transform: translate(-50%, -50%);
+       /*background-color: rgba(0, 0, 255, 0.3); /* 테스트용 */
+    }
+    @media (max-width: 768px) {
+      .container {
+        max-width: 100%; /* 작은 화면에서 전체 너비 사용 */
+        aspect-ratio: auto; /* 비율 조정 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Coming Soon 영역 -->
+  <div id="coming-soon">
+    <h1>Coming Soon</h1>
+    <p>조금만 기다려줘~</p>
+  </div>
+
+  <div id="main-content">
+    <div class="container">
+      <img src="pixelroom.webp" alt="Clubroom"> <!-- 메인 이미지 -->
+      <div class="clickable profile" onclick="navigateTo('profile.html')"></div> <!-- 책 위 클릭 가능한 영역 -->
+      <div class="clickable poster" onclick="navigateTo('poster.html')"></div>
+      <div class="clickable cartoon" onclick="navigateTo('cartoon.html')"></div>
+      <div class="clickable form" onclick="navigateTo('form.html')"></div>
+      <div class="clickable youtube" onclick="navigateTo('https://youtube.com/playlist?list=PLiP0-9VGGwuGKOv9ImGH9QGUOY689Uhlc&si=XRZYJyhv4j6OMS_T')"></div>
+      <div class="clickable playlist" onclick="navigateTo('playlist.html')"></div>
+    </div>
+  </div>
+  <script>
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+    // 공개 날짜 설정 (예: 2024년 1월 1일)
+    const releaseDate = new Date('2024-12-28T16:25:00');
+    
+    // 현재 시간 확인
+    const now = new Date();
+
+    // 날짜 조건에 따라 콘텐츠 전환
+    if (now >= releaseDate) {
+      document.getElementById('coming-soon').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }
+  </script>
+  
+</body>
+</html>

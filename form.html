@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARTOON CLUB FORM</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100dvh;
+      background-color: #9d453c;
+      overflow: hidden;
+    }
+    .container {
+      position: relative;
+      width: 90vw;
+      height: 90dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* 세로 중앙 정렬 */
+    }
+    .container img {
+      width: auto; /* 부모 요소의 너비에 맞춤 */
+      height: 80dvh; /* 비율 유지 */
+      object-fit: contain; /* 이미지가 가로를 꽉 채우고 세로는 중앙에 맞추기 */
+    }
+    /* 별 모양 */
+    .star {
+      position: absolute;
+      width: 55px;
+      height: 55px;
+      background-color: #FAE5A1;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      box-shadow: 0px 0px 8px rgba(255, 255, 0, 0.8); /* 입체적인 그림자 효과 */
+      opacity: 0.9;
+    }
+    /* 별의 위치 */
+    .star1 {
+      top: 6%; /* 원하는 위치에 별 배치 */
+      left: 50%;
+      transform: translate(-50%, -50%); /* 정확히 가운데 위치 */
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100vw; /* 작은 화면에서 전체 너비 사용 */
+        height: 100dvh;
+      }
+      .container img {
+        width: 90vw; /* 부모 요소의 너비에 맞춤 */
+        height: auto; /* 비율 유지 */
+        object-fit: contain; /* 이미지가 가로를 꽉 채우고 세로는 중앙에 맞추기 */
+        object-position: center; /* 이미지의 중앙을 기준으로 위치 */
+      }
+      .star1 {
+      top: 12%; /* 원하는 위치에 별 배치 */
+      left: 50%;
+      transform: translate(-50%, -50%); /* 정확히 가운데 위치 */
+      }
+      .star {
+      width: 40px;
+      height: 40px;
+      }
+    }
+  </style>
+</head>
+  <body>
+    <div class="container">
+      <img src="form(opened).png" alt="프로필">
+      <div class="star star1"></div>
+    </div>
+  </body>
+  </html>

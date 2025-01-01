@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartoon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse, #C79A9D 20%, #8E5C71 40%, #1B2E43 80%, #151C2A 100%);
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    @keyframes gradient-move {
+      0% {
+        background-size: 100% 100%;
+      }
+      50% {
+        background-size: 110% 110%; /* 부드럽게 확장 */
+      }
+      100% {
+        background-size: 100% 100%; /* 원래 크기로 돌아감 */
+      }
+    }
+  
+    .container {
+      perspective: 1000px; /* 3D 효과 */
+      position: relative; /* 자식 요소가 absolute로 잘 배치될 수 있도록 수정 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      z-index: 1; /* 별보다 앞에 오도록 설정 */
+    }
+    /* 기본 상태 */
+    .carousel-item {
+    position: absolute;
+    width: 450px; /* 카드 너비 */
+    height: 600px; /* 카드 높이 */
+    transform-origin: center;
+    transform: scale(0.8) translateZ(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 0; /* 기본적으로 뒤에 배치 */
+    opacity: 0.5; /* 기본적으로 반투명 */
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      border-radius: 1px; /* 카드 모서리 둥글게 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 가운데 카드 (가장 앞에 위치) */
+    .carousel-item.active {
+    z-index: 2;
+    opacity: 1; /* 완전히 보임 */
+    transform: translateX(0) rotateY(0deg) scale(1); /* 살짝 확대 (옵션) */
+    }
+    /* 왼쪽 카드 */
+    .carousel-item.left {
+    z-index: 1;
+    transform: translateX(-100%) rotateY(30deg) scale(0.9); /* 약간 작아지고 왼쪽으로 이동 */
+    }
+    /* 오른쪽 카드 */
+    .carousel-item.right {
+    z-index: 1;
+    transform: translateX(100%) rotateY(-30deg) scale(0.9); /* 약간 작아지고 오른쪽으로 이동 */
+    }
+
+    @media (max-width: 768px) {
+      /* 기본 상태 */
+      .carousel-item {
+      position: absolute;
+      width: 300px; /* 카드 너비 */
+      height: 400px; /* 카드 높이 */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="carousel-item"><img src="hoodie.jpg" alt="Image 1"></div>
+    <div class="carousel-item"><img src="pink.jpg" alt="Image 2"></div>
+    <div class="carousel-item"><img src="blond.jpg" alt="Image 3"></div>
+  </div>
+  <div class="background"></div> <!-- 배경 이미지 설정 -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.carousel-item');
+      let currentIndex = 0;
+
+      let isDragging = false;
+      let startX = 0;
+      let endX = 0;
+
+      function updateCarousel() {            
+        items.forEach((item, index) => {
+          item.classList.remove('active', 'left', 'right');
+          if (index === currentIndex) {
+              item.classList.add('active');
+          } else if (index === (currentIndex - 1 + items.length) % items.length) {
+              item.classList.add('left');
+          } else if (index === (currentIndex + 1) % items.length) {
+              item.classList.add('right');
+          }
+        });
+      }
+
+      function handleNext() {
+          currentIndex = (currentIndex + 1) % items.length;
+          updateCarousel();
+      }
+
+      function handlePrev() {
+          currentIndex = (currentIndex - 1 + items.length) % items.length;
+          updateCarousel();
+      }
+
+      const container = document.querySelector('.container');
+
+      // 드래그 동작
+      container.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.clientX;
+      });
+
+      container.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          endX = e.clientX;
+      });
+
+      container.addEventListener('mouseup', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          if (startX > endX + 50) handleNext();
+          else if (startX < endX - 50) handlePrev();
+      });
+
+      // 스크롤 이벤트
+      document.addEventListener('wheel', (e) => {
+        const scrollThreshold = 100; // 민감도 조정
+        // 가로 스크롤 추가
+        if (e.deltaX > scrollThreshold) {
+          handleNext(); // 오른쪽으로 스크롤하면 다음 카드
+        } else if (e.deltaX < -scrollThreshold) {
+          handlePrev(); // 왼쪽으로 스크롤하면 이전 카드
+        }
+      });
+
+      document.querySelector('.container').addEventListener('touchstart', (e) => {
+          startX = e.touches[0].pageX; // 터치 시작 지점
+      });
+
+      document.querySelector('.container').addEventListener('touchmove', (e) => {
+          endX = e.touches[0].pageX; // 터치 끝 지점
+      });
+
+      document.querySelector('.container').addEventListener('touchend', () => {
+          if (startX > endX + 50) { // 왼쪽으로 스와이프
+          handleNext();
+          } else if (startX < endX - 50) { // 오른쪽으로 스와이프
+          handlePrev();
+          }
+      });
+
+      // 초기화
+      updateCarousel();
+    }); 
+  </script>
+</body>
+</html>
