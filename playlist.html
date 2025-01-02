@@ -3,31 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YM Playlists</title>
+  <title>YUMA'S Playlists</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #FFDDE1;
       padding: 20px;
     }
     .playlist-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
     }
     .playlist-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px;
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
+    .playlist-item img {
+      width: 60px; /* 앨범 커버 크기 */
+      height: 60px;
+      border-radius: 8px;
+      margin-right: 15px; /* 이미지와 텍스트 간 간격 */
+    }
+    .playlist-item h3 {
+      font-size: 16px;
+      margin: 0;
+    }
+    /* 버튼 컨테이너 */
     .button-container {
       display: flex;
       gap: 20px; /* 버튼들 간의 간격 */
+      position: fixed;
+      bottom: 20px; /* 화면 하단에서 20px 위로 */
+      left: 50%;
+      transform: translateX(-50%); /* 가운데 정렬 */
+      z-index: 10; /* 다른 요소들 위에 보이게 */
     }
 
     button {
@@ -35,7 +50,7 @@
       color: #c0e6c4; /* 텍스트 색상 */
       border: none;
       width: 100px;
-      height: 35px;
+      height: 40px;
       font-size: 18px; /* 화살표 크기 */
       cursor: pointer;
       border-radius: 10px; /* 둥근 버튼 */
@@ -57,11 +72,28 @@
   </style>
 </head>
 <body>
-  <!-- "담기" 버튼 -->
-  <button onclick="addToPlaylist('spotify', 'track_id')">Spotify</button>
-  <button onclick="addToPlaylist('melon', 'album_id')">Melon</button>
-  <button onclick="addToPlaylist('bugs', 'video_id')">Bugs</button>
+  <!-- 플레이리스트 항목들, 여기에 곡을 넣을 수 있습니다. -->
+  <div class="playlist-container">
+    <div class="playlist-item">
+      <img src="fw.png" alt="Album Cover">
+      <h3>FIREWORK -Korean ver.</h3>
+    </div>
+    <div class="playlist-item">
+      <img src="yukiakari.png" alt="Album Cover">
+      <h3>Yukiakari</h3>
+    </div>
+    <div class="playlist-item">
+      <img src="uds.png" alt="Album Cover">
+      <h3>Under the Skin</h3>
+    </div>
+  </div>
 
+  <!-- "담기" 버튼 -->
+  <div class="button-container">
+    <button onclick="addToPlaylist('spotify', 'track_id')">Spotify</button>
+    <button onclick="addToPlaylist('melon', 'album_id')">Melon</button>
+    <button onclick="addToPlaylist('bugs', 'video_id')">Bugs</button>
+  </div>
   <script>
     // 버튼 클릭 시 음원 사이트로 이동하는 함수
     function addToPlaylist(platform, id) {
