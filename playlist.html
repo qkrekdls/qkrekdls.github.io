@@ -24,73 +24,58 @@
       border: 1px solid #ddd;
       border-radius: 8px;
     }
-    .playlist-item h3 {
-      margin: 0;
-    }
-    .app-icons {
+
+    .button-container {
       display: flex;
-      gap: 10px;
+      gap: 20px; /* 버튼들 간의 간격 */
     }
-    .app-icons img {
-      width: 40px;
-      height: 40px;
+
+    button {
+      background-color: #F8BBD0; /* 파스텔 핑크 */
+      color: #c0e6c4; /* 텍스트 색상 */
+      border: none;
+      width: 100px;
+      height: 35px;
+      font-size: 18px; /* 화살표 크기 */
       cursor: pointer;
+      border-radius: 10px; /* 둥근 버튼 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    /* 버튼들이 한 줄로 배열되도록 설정 */
+
+    button:hover {
+      background-color: #f69bad; /* 호버 시 더 어두운 파스텔 핑크 */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px); /* 버튼이 떠오르는 효과 */
+    }
+    /* 버튼 클릭 시 효과 */
+    .buttons button:active {
+      transform: translateY(2px); /* 눌린 듯한 효과 */
     }
   </style>
 </head>
 <body>
-  <h1>Your Playlists</h1>
-  <div class="playlist-container">
-    <div class="playlist-item">
-      <h3>My Playlist 1</h3>
-      <div class="app-icons">
-        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
-        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
-        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
-        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
-      </div>
-    </div>
-
-    <div class="playlist-item">
-      <h3>My Playlist 2</h3>
-      <div class="app-icons">
-        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
-        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
-        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
-        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
-      </div>
-    </div>
-
-    <div class="playlist-item">
-      <h3>My Playlist 3</h3>
-      <div class="app-icons">
-        <img src="spotify-icon.png" alt="Spotify" onclick="addToSpotify()">
-        <img src="melon-icon.png" alt="Melon" onclick="addToMelon()">
-        <img src="applemusic-icon.png" alt="Apple Music" onclick="addToAppleMusic()">
-        <img src="genie-icon.png" alt="Genie" onclick="addToGenie()">
-      </div>
-    </div>
-  </div>
+  <!-- "담기" 버튼 -->
+  <button onclick="addToPlaylist('spotify', 'track_id')">Spotify</button>
+  <button onclick="addToPlaylist('melon', 'album_id')">Melon</button>
+  <button onclick="addToPlaylist('bugs', 'video_id')">Bugs</button>
 
   <script>
-    function addToSpotify() {
-      alert("Adding to Spotify playlist...");
-      // 실제 Spotify API 연동 코드 필요
-    }
-    
-    function addToMelon() {
-      alert("Adding to Melon playlist...");
-      // 실제 Melon API 연동 코드 필요
-    }
+    // 버튼 클릭 시 음원 사이트로 이동하는 함수
+    function addToPlaylist(platform, id) {
+      let url = '';
+      
+      if (platform === 'spotify') {
+        url = `https://open.spotify.com/playlist/5Q5LkI6ebQTTb3lMOHrSCu?si=df321307b7564a87`;
+      } else if (platform === 'melon') {
+        url = `https://www.melon.com/mymusic/playlist/mymusicplaylistview_inform.htm?plylstSeq=535361846&ref={W20300}`;
+      } else if (platform === 'bugs') {
+        url = `https://m.bugs.co.kr/nextbugs/share/myalbum/238452`;
+      }
 
-    function addToAppleMusic() {
-      alert("Adding to Apple Music playlist...");
-      // 실제 Apple Music API 연동 코드 필요
-    }
-
-    function addToGenie() {
-      alert("Adding to Genie playlist...");
-      // 실제 Genie API 연동 코드 필요
+      window.open(url, '_blank'); // 새 창에서 음원 사이트 열기
     }
   </script>
 </body>
