@@ -17,37 +17,6 @@
       overflow: hidden;
       position: relative;
     }
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 300%; /* 더 넓게 확장 */
-      height: 300%;
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.15) 0%,
-        rgba(255, 255, 255, 0.1) 30%,
-        transparent 70%
-      ); /* 부드러운 경계 */
-      mix-blend-mode: overlay;
-      opacity: 0.5;
-      pointer-events: none;
-      filter: blur(20px); /* 경계 흐림 효과 추가 */
-      animation: smooth-gloss 10s infinite ease-in-out;
-    }
-
-    @keyframes smooth-gloss {
-      0% {
-        transform: translate(-20%, -20%) scale(1);
-      }
-      50% {
-        transform: translate(20%, 20%) scale(1.1); /* 부드럽게 이동 및 약간 확대 */
-      }
-      100% {
-        transform: translate(-20%, -20%) scale(1);
-      }
-    }
     .container {
       perspective: 1000px; /* 3D 효과 */
       position: relative; /* 자식 요소가 absolute로 잘 배치될 수 있도록 수정 */
