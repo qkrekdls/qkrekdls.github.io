@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YUMA'S Playlists</title>
+  <title>YUMA'S PLAYLISTS</title>
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'hjy4xcf',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'yoon-px-pixman', sans-serif;
       background-color: #FFDDE1;
+      color: #3f3f3e;
       padding: 20px;
     }
     .playlist-container {
@@ -28,7 +39,7 @@
       width: 60px; /* 앨범 커버 크기 */
       height: 60px;
       border-radius: 8px;
-      margin-right: 15px; /* 이미지와 텍스트 간 간격 */
+      margin-right: 20px; /* 이미지와 텍스트 간 간격 */
     }
     .playlist-item h3 {
       font-size: 16px;
@@ -59,7 +70,6 @@
       outline: none;
     }
     /* 버튼들이 한 줄로 배열되도록 설정 */
-
     button:hover {
       background-color: #f69bad; /* 호버 시 더 어두운 파스텔 핑크 */
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -76,7 +86,7 @@
   <div class="playlist-container">
     <div class="playlist-item">
       <img src="fw.png" alt="Album Cover">
-      <h3>FIREWORK -Korean ver.</h3>
+      <h3>FIREWORK - Korean ver.</h3>
     </div>
     <div class="playlist-item">
       <img src="yukiakari.png" alt="Album Cover">
