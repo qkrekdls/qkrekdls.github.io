@@ -25,7 +25,6 @@
     .container {
       position: relative;
       width: 100%;
-      max-width: 1200px; /* 최대 너비 */
       aspect-ratio: 16 / 9; /* 화면 비율 고정 */
       overflow: hidden;
     }
@@ -90,9 +89,9 @@
        /*background-color: rgba(0, 0, 255, 0.3); /* 테스트용 */
     }
     @media (max-width: 768px) {
-      .container {
-        max-width: 100%; /* 작은 화면에서 전체 너비 사용 */
-        aspect-ratio: auto; /* 비율 조정 */
+      .container img {
+      width: 160vw; /* 부모 요소의 너비에 맞춤 */
+      height: auto; /* 비율 유지 */
       }
     }
   </style>
